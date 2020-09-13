@@ -84,7 +84,7 @@ public class DB {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + dbName 
-                    + "?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false", "" + username + "", "" + password + "");
+                    + "?useUnicode=true&characterEncoding=UTF-8", "" + username + "", "" + password + "");
           //  c = DriverManager.getConnection("jdbc:mysql://localhost:3306/central_industries","root","1234");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data Base Connection Failed,, Try restartng your Machine and Mysql services",
