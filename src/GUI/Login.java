@@ -402,7 +402,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill all the fields", "Feilds not filled", JOptionPane.INFORMATION_MESSAGE);
         } else {
             try {
-                ResultSet rs = DB.search("select * from user where username='nima'");
+                ResultSet rs = DB.search("select * from user where username='" + userName.getText() + "' and password='" + HashingEncription.getEncription(password.getText().toString()) + "'");
                
                 if (rs.next()) {
                     if(rs.getInt("state")==1){
