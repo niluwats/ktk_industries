@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="supplier_payment" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="322b0a88-1fe9-4835-a84e-1b52caebbbcf">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="voucher_no" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+sp.date as sp_date,
+sp.payment_voucherNo as voucher_no,
+s.company as company,
+gr.grn_no as grn_no,
+gr.date as grn_date,
+gr.value as grn_value,
+sp.value as s_value
+
+from supplier_payment sp inner join supplier s on sp.id_supplier=s.id_supplier
+inner join grn_raw gr on sp.payment_voucherNo = gr.payment_voucherNo
+
+ where sp.payment_voucherNo = $P{voucher_no};]]>
+	</queryString>
+	<field name="sp_date" class="java.sql.Date"/>
+	<field name="voucher_no" class="java.lang.String"/>
+	<field name="company" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grn_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grn_date" class="java.sql.Date"/>
+	<field name="grn_value" class="java.lang.Double"/>
+	<field name="s_value" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="285" y="17" width="270" height="97" backcolor="#6699FF" uuid="1c269f99-b6bb-4dc9-9484-910292e6d97b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Supplier Payment Note]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="246" height="146" uuid="0e8b4d20-43ed-4bd9-8c67-52b06dea704e"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\ktk.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="43" width="89" height="20" uuid="d2ed3022-b1ff-481a-9ed4-0bf513646d25"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier Name   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="13" width="89" height="20" uuid="92839df2-129d-4e19-8e07-cd8fb8c1c74c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Voucher No       :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="13" width="38" height="20" uuid="b331f348-5094-42a8-88e3-60c93c75fe71"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="13" width="100" height="20" uuid="11428c9b-9f0b-4313-904a-51c17bd585cd"/>
+				<textFieldExpression><![CDATA[$F{voucher_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="43" width="100" height="20" uuid="e091e7a8-10e8-4793-adf0-29e0d077d512"/>
+				<textFieldExpression><![CDATA[$F{company}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="13" width="100" height="20" uuid="acb996ca-aec1-4223-a754-8828c7a98c9b"/>
+				<textFieldExpression><![CDATA[$F{sp_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="10" width="175" height="20" backcolor="#CCCCCC" uuid="6dfda248-9452-49a6-9932-d9ff18ae1fdd"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="212" y="10" width="168" height="20" backcolor="#CCCCCC" uuid="c683abcc-7e6f-4b5a-8f66-1b138a4aefae"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN  Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="10" width="212" height="20" backcolor="#CCCCCC" uuid="07aa1d0a-9ede-45d2-a6cf-8d4506c9a1c4"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  GRN No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="467ac304-5b96-4b49-88d5-f8db8d1104ea"/>
+				<textFieldExpression><![CDATA[$F{grn_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="100" height="20" uuid="25396984-5991-471f-80c9-21b0ab8b3357"/>
+				<textFieldExpression><![CDATA[$F{grn_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="100" height="20" uuid="b8150e0c-01a9-46f0-9bd6-24c2705a8345"/>
+				<textFieldExpression><![CDATA[$F{grn_value}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement x="67" y="12" width="144" height="20" uuid="1b854d2c-3650-4882-a00d-5f1630919672"/>
+				<textElement verticalAlignment="Bottom" rotation="None">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[..........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="67" height="20" uuid="b03ee222-1313-4a86-bc08-0edf7bd5cb42"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked By :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="20" width="82" height="20" uuid="1630a273-b788-4188-b90f-d2c30cbfaf5a"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET  TOTAL ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="20" width="100" height="20" uuid="20548ca8-7e0f-404d-b345-8bb4c7171587"/>
+				<textFieldExpression><![CDATA[$F{s_value}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

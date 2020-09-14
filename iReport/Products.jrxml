@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c589668-f443-4095-a7ff-9ed5a159bde1">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     product.`id_product` AS product_id_product,
+     product.`productname` AS product_productname,
+     product.`description` AS product_description,
+     product_brand.`brand` AS product_brand_brand,
+     product_category.`category` AS product_category_category
+FROM
+     `product_brand` product_brand INNER JOIN `product` product ON product_brand.`idbrand` = product.`brand`
+     INNER JOIN `product_category` product_category ON product.`category` = product_category.`idcategory`]]>
+	</queryString>
+	<field name="product_id_product" class="java.lang.String"/>
+	<field name="product_productname" class="java.lang.String"/>
+	<field name="product_description" class="java.lang.String"/>
+	<field name="product_brand_brand" class="java.lang.String"/>
+	<field name="product_category_category" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="0" width="254" height="97" backcolor="#6699FF" uuid="48c64ac4-8769-463e-8a10-7b23d0c6e014"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Details Report]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="210" height="151" uuid="50bb00a2-a210-4027-aae4-e18a9379905a"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\ktk.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="a0ef3b57-cec1-4c00-823e-8b96fc123e01"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e4458f1d-b7e8-4fa7-adcc-9d800764a88d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e4aa970a-ca2a-4fc7-a5e4-97522770efa3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Brand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="3e6290e6-75f6-42a9-a854-20dba0c73231"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="06d21d3e-2902-45bd-9483-1d9f2c3f0083"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="eeed87dd-5e53-4c2e-adc6-10d29266e2ff"/>
+				<textFieldExpression><![CDATA[$F{product_id_product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="f20805f8-7cf3-4ab9-93c7-b24f6ad28ed6"/>
+				<textFieldExpression><![CDATA[$F{product_productname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="74bfa91c-ff2b-48d8-9e28-5bdb61440620"/>
+				<textFieldExpression><![CDATA[$F{product_brand_brand}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="e81ec1cf-e1b1-4077-b392-9e8c1ca60746"/>
+				<textFieldExpression><![CDATA[$F{product_category_category}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="83979596-80ca-4237-9bf7-a1244ed7700f"/>
+				<textFieldExpression><![CDATA[$F{product_description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

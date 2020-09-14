@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daily_attendance_sectionwise" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="070083d9-56ae-4d4f-91db-05fef8b6fb31">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="department" class="java.lang.String"/>
+	<parameter name="leave_count" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+  attendance.id_employee as c,
+     attendance.`date` AS attendance_date,
+     attendance.`inTime` AS attendance_inTime,
+     attendance.`outTime` AS attendance_outTime,
+     attendance.`id_employee` AS attendance_id_employee,
+     attendance.`shift` AS attendance_shift,
+     attendance.`department` AS attendance_department,
+     attendance.`status` AS attendance_status,
+     employee.`id_employee` AS employee_id_employee,
+     employee.`fname` AS employee_fname,
+     employee.`mname` AS employee_mname
+FROM
+     `employee` employee INNER JOIN `attendance` attendance ON employee.`id_employee` = attendance.`id_employee`
+where
+date=$P{date}
+and attendance.department=$P{department};]]>
+	</queryString>
+	<field name="c" class="java.lang.String"/>
+	<field name="attendance_date" class="java.sql.Date"/>
+	<field name="attendance_inTime" class="java.sql.Time"/>
+	<field name="attendance_outTime" class="java.sql.Time"/>
+	<field name="attendance_id_employee" class="java.lang.String"/>
+	<field name="attendance_shift" class="java.lang.String"/>
+	<field name="attendance_department" class="java.lang.String"/>
+	<field name="attendance_status" class="java.lang.String"/>
+	<field name="employee_id_employee" class="java.lang.String"/>
+	<field name="employee_fname" class="java.lang.String"/>
+	<field name="employee_mname" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="172" height="115" uuid="61b9d71a-f43e-4d9a-9478-331d40baba97"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="353" y="0" width="202" height="64" uuid="f23e48e8-9992-4b61-8f10-0896d5791a01"/>
+				<textElement>
+					<font fontName="Calibri" size="24"/>
+				</textElement>
+				<text><![CDATA[Section wise Daily Attendance Report]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="172" y="82" width="100" height="20" uuid="fe76affa-2520-4f6f-830b-fc7f70b97537"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attendance_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="82" width="100" height="20" uuid="57962b3f-47be-4c5b-ab17-ef4a44eab421"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attendance_department}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="29" backcolor="#CCCCCC" uuid="13dc51b0-ca50-422b-935c-1544e02c9008"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="21" y="9" width="44" height="20" uuid="eff8b05e-3c9d-41a9-a616-3db3599ac9a2"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emp ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="9" width="46" height="20" uuid="0b2e3420-a6ef-469a-82d0-489c172df816"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="9" width="54" height="20" uuid="7172a97c-5f9c-458a-831f-c4a899cdf7de"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="9" width="48" height="20" uuid="ffe0486f-41df-4f5c-8250-46412ff01378"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[In time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="9" width="60" height="20" uuid="5235cc82-4950-441e-ba40-263bb10179bb"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Out time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="9" width="43" height="20" uuid="369dcc60-e27e-483d-9e5f-6adea1cd2a97"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="341" y="0" width="41" height="20" uuid="b315f45b-40cc-4e3f-a089-86d9bc045596"/>
+				<textFieldExpression><![CDATA[$F{attendance_inTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="41" height="20" uuid="b3d1e333-5107-479d-8de0-1a746cca5a7d"/>
+				<textFieldExpression><![CDATA[$F{attendance_outTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="0" width="54" height="20" uuid="fcd27280-55ce-4e95-8f99-14d12779a9af"/>
+				<textFieldExpression><![CDATA[$F{attendance_shift}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="80" height="20" uuid="8edff460-965e-4eea-8015-f5f703323e96"/>
+				<textFieldExpression><![CDATA[$F{attendance_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="0" width="61" height="20" uuid="6d79b8de-d0d6-4066-953d-cb562b767e1d"/>
+				<textFieldExpression><![CDATA[$F{employee_id_employee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="56" height="20" uuid="b33b453a-ac27-4b0c-885e-e913017a5106"/>
+				<textFieldExpression><![CDATA[$F{employee_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="56" height="20" uuid="08576abf-574a-4de6-805e-19b775484ae0"/>
+				<textFieldExpression><![CDATA[$F{employee_mname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="417" y="0" width="75" height="20" uuid="dc34b7e3-df8e-4044-aba6-627e084aa82e"/>
+				<textElement>
+					<font fontName="Cambria" size="14"/>
+				</textElement>
+				<text><![CDATA[Head Count]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="492" y="0" width="53" height="20" uuid="a0cf5e80-2e79-47c4-8257-154c4da15960"/>
+				<textElement>
+					<font fontName="Cambria" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{leave_count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="12" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="2" splitType="Stretch"/>
+	</summary>
+</jasperReport>

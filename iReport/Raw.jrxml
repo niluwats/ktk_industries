@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c589668-f443-4095-a7ff-9ed5a159bde1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     raw_matrials.`idraw_matrials` AS raw_matrials_idraw_matrials,
+     raw_matrials.`name` AS raw_matrials_name,
+     raw_matrials.`unit` AS raw_matrials_unit,
+     raw_matrials.`description` AS raw_matrials_description,
+     raw_category.`category` AS raw_category_category
+FROM
+     `raw_category` raw_category INNER JOIN `raw_matrials` raw_matrials ON raw_category.`id` = raw_matrials.`category`]]>
+	</queryString>
+	<field name="raw_matrials_idraw_matrials" class="java.lang.String"/>
+	<field name="raw_matrials_name" class="java.lang.String"/>
+	<field name="raw_matrials_unit" class="java.lang.String"/>
+	<field name="raw_matrials_description" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" uuid="4226eb05-cc79-455b-b23b-d8b37d20095a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="20"/>
+				</textElement>
+				<text><![CDATA[Central Industries Pvt Ltd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="555" height="34" uuid="288cf721-5004-4e83-9725-163c60781ffe"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Raw Material Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="a0ef3b57-cec1-4c00-823e-8b96fc123e01"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e4458f1d-b7e8-4fa7-adcc-9d800764a88d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Raw Material]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e4aa970a-ca2a-4fc7-a5e4-97522770efa3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="222" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="06d21d3e-2902-45bd-9483-1d9f2c3f0083"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="a59a6a9d-7df6-4f66-b9bc-860c7563098d"/>
+				<textFieldExpression><![CDATA[$F{raw_matrials_idraw_matrials}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="ec8dba83-2804-4ae8-b35f-eeb53f5e9673"/>
+				<textFieldExpression><![CDATA[$F{raw_matrials_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="ac548ce1-146a-48aa-85a4-ca2b588fdbd9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{raw_matrials_unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="222" height="20" uuid="35252820-7209-45e3-b9f6-2342b1046fde"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{raw_matrials_description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

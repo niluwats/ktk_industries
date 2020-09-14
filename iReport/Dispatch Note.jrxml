@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Dispatch Note" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="618ba640-4d57-4117-9f63-ac0b9dad1aa2">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Disp" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Pasindu\\Desktop\\ERP_Central_Industries\\iReport\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from dispatch where id_dispatch =$P{Disp};]]>
+	</queryString>
+	<field name="id_dispatch" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="driver" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vehicle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="created_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="283" y="0" width="270" height="97" backcolor="#6699FF" uuid="7745204f-7266-4e8b-84b1-a012a4c651cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Dispatch Note]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="283" height="151" uuid="890e004a-538c-446d-9383-ca36346e9615"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\ktk.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="343" y="10" width="38" height="20" uuid="f2c78c29-ecf4-4b6f-907d-9a99e525ec92"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="30" width="90" height="20" uuid="ff13ad17-11de-409d-8def-6a787dc04d15"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Driver Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="10" width="89" height="20" uuid="0674e60a-093a-4954-af1e-e4f711f2431c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dispatch No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="50" width="88" height="20" uuid="6c5e0de8-71dd-459b-bf49-a4bce33ce285"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle No]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="10" width="100" height="20" uuid="c3b4cd5e-3143-49f1-9d85-db8c6a6b49ce"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_dispatch}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="391" y="10" width="128" height="20" uuid="695fff5c-87be-424d-9847-42f7363b60f7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="30" width="100" height="20" uuid="6ff3cbd7-29a2-45a3-afc6-5149f69258ac"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{driver}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="50" width="100" height="20" uuid="7d599c1d-5868-48af-93ee-0fad0df78809"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="10" width="10" height="20" uuid="0d461280-a296-4bed-825c-91bf8a9eee58"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="30" width="10" height="20" uuid="a77835b7-e808-4326-ad46-ef7cbe75cb04"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="50" width="10" height="20" uuid="766ea1cf-aae7-4103-9d31-7b8b936d31c6"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="10" width="10" height="20" uuid="6e3070e1-8179-46cd-b39c-8880c6986cb3"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="133" height="20" backcolor="#CCCCCC" uuid="fc58d0c0-18d4-42cc-a6e8-0cf0b7f2d67f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Invoice No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="133" y="0" width="304" height="20" backcolor="#CCCCCC" uuid="e1aa8a9a-170e-41d2-abaa-55e258fde017"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="0" width="118" height="20" backcolor="#CCCCCC" uuid="c2deaa2c-9603-46c8-9f38-e987cfcf06a4"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="297" height="56" uuid="d8c20847-77c7-4b20-b527-861f5f84449b"/>
+				<subreportParameter name="Dis_sub">
+					<subreportParameterExpression><![CDATA[$F{id_dispatch}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Dispatch_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="437" y="9" width="100" height="20" uuid="a3a37b3e-5b47-4f2e-9070-a5e2dec75fa1"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="9" width="82" height="20" uuid="b188503c-65d4-4823-9c07-794835400f37"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET  TOTAL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="67" height="20" uuid="bbb77bf3-a3ae-4d94-b0f6-23e3ae954e1c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked By :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="22" width="144" height="20" uuid="5c617dc0-6d08-4a41-ae6c-5d3a06b2a65b"/>
+				<textElement verticalAlignment="Bottom" rotation="None">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[..........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="9" width="10" height="20" uuid="b785cde2-ad4a-4a6a-872c-9ee46586df75"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

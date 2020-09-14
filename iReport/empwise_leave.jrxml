@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="empwise_leave" language="groovy" pageWidth="504" pageHeight="504" columnWidth="464" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="298104c3-979a-4b00-9f3f-f51eb5148788">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="department" class="java.lang.String"/>
+	<parameter name="employee" class="java.lang.String"/>
+	<parameter name="Month" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     attendance.`date` AS attendance_date,
+     attendance.`inTime` AS attendance_inTime,
+     attendance.`outTime` AS attendance_outTime,
+     attendance.`id_employee` AS attendance_id_employee,
+     attendance.`shift` AS attendance_shift,
+     attendance.`department` AS attendance_department,
+     attendance.`status` AS attendance_status,
+     employee.`id_employee` AS employee_id_employee,
+     employee.`fname` AS employee_fname,
+     employee.`mname` AS employee_mname
+FROM
+     `employee` employee INNER JOIN `attendance` attendance ON employee.`id_employee` = attendance.`id_employee` where month(date)=$P{month} and year(date)=$P{year} and attendance.`department`=$P{department} and  attendance.`id_employee`=$P{employee} and status!='Present';]]>
+	</queryString>
+	<field name="attendance_date" class="java.sql.Date"/>
+	<field name="attendance_inTime" class="java.sql.Time"/>
+	<field name="attendance_outTime" class="java.sql.Time"/>
+	<field name="attendance_id_employee" class="java.lang.String"/>
+	<field name="attendance_shift" class="java.lang.String"/>
+	<field name="attendance_department" class="java.lang.String"/>
+	<field name="attendance_status" class="java.lang.String"/>
+	<field name="employee_id_employee" class="java.lang.String"/>
+	<field name="employee_fname" class="java.lang.String"/>
+	<field name="employee_mname" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="178" y="0" width="286" height="44" uuid="e192a3cf-1938-4699-8625-b1acc59b6558"/>
+				<textElement>
+					<font fontName="Calibri" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee wise Leave Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="232" y="81" width="59" height="20" uuid="89d81edb-c8ed-4336-bb02-3a498dce0298"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="81" width="80" height="20" uuid="307187e6-6880-4887-aa0f-2f6ad4b5ec63"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Month}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="6" y="0" width="145" height="118" uuid="4a4a6a6f-6fec-4f40-9cf0-51e161148b62"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="320" y="9" width="144" height="20" uuid="5385d142-1361-493e-ab31-2a77e26c7b6b"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{department}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="9" width="61" height="20" uuid="5c8c85b4-85c5-44c2-a34f-25f2b79f837a"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="9" width="65" height="20" uuid="68681a5d-f737-4837-bfd4-fb2dbefcb6a4"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="9" width="46" height="20" uuid="642b3585-68ba-4c1f-9b65-f7ba5dc156a8"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_mname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<rectangle>
+				<reportElement x="6" y="5" width="458" height="20" backcolor="#999999" uuid="a77121cc-d565-4941-b25e-217af17d431b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="5" width="100" height="20" uuid="c8d00f9b-53e1-4a0e-bb3a-3614d329c575"/>
+				<textElement>
+					<font fontName="Cambria" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="5" width="100" height="20" uuid="49f762ba-a6c3-439b-9c0e-0585f7f56a98"/>
+				<textElement>
+					<font fontName="Cambria" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leave type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="0" width="113" height="20" uuid="2e71066e-b5f8-4443-b35c-d8375d266148"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attendance_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="203" height="20" uuid="6679d23b-f70b-4daf-959d-fcbf5a71badb"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{attendance_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

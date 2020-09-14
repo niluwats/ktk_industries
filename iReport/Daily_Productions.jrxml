@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="product_stock" language="groovy" pageWidth="595" pageHeight="409" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c91f93c-2c0b-4668-9db0-8824351880ac">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<parameter name="production_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sum(grn_item.`qty`) AS grn_item_qty,
+     grn_item.`id_grnitem` AS grn_item_id_grnitem,
+     grn_item.`id_product` AS grn_item_id_product,
+     grn_item.`grn_no` AS grn_item_grn_no,
+     grn_item.`unit` AS grn_item_unit,
+     product.`id_product` AS product_id_product,
+     product.`brand` AS product_brand,
+     product.`category` AS product_category,
+     product.`productname` AS product_productname,
+     product.`unit` AS product_unit,
+     product.`retail_price` AS product_retail_price,
+     product.`description` AS product_description,
+     product.`state` AS product_state,
+     product.`date_created` AS product_date_created,
+     product_brand.`idbrand` AS product_brand_idbrand,
+     product_brand.`brand` AS product_brand_brand,
+     product_brand.`description` AS product_brand_description,
+     product_category.`idcategory` AS product_category_idcategory,
+     product_category.`category` AS product_category_category,
+     product_category.`description` AS product_category_description,
+     grn_product.`grn_no` AS grn_product_grn_no,
+     grn_product.`date` AS grn_product_date,
+     grn_product.`last_modified` AS grn_product_last_modified,
+     grn_product.`state` AS grn_product_state,
+     grn_product.`created_by` AS grn_product_created_by,
+     product_brand_A.`idbrand` AS product_brand_A_idbrand,
+     product_brand_A.`brand` AS product_brand_A_brand,
+     product_brand_A.`description` AS product_brand_A_description,
+     product_category_A.`idcategory` AS product_category_A_idcategory,
+     product_category_A.`category` AS product_category_A_category,
+     product_category_A.`description` AS product_category_A_description
+FROM
+     `product` product INNER JOIN `grn_item` grn_item ON product.`id_product` = grn_item.`id_product`
+     INNER JOIN `product_brand` product_brand ON product.`brand` = product_brand.`idbrand`
+     INNER JOIN `product_category` product_category ON product.`category` = product_category.`idcategory`
+     INNER JOIN `product_brand` product_brand_A ON product.`brand` = product_brand_A.`idbrand`
+     INNER JOIN `product_category` product_category_A ON product.`category` = product_category_A.`idcategory`
+     INNER JOIN `grn_product` grn_product ON grn_item.`grn_no` = grn_product.`grn_no`
+WHERE
+     grn_product.`date` = $P{production_date}
+GROUP BY
+     product.`id_product`]]>
+	</queryString>
+	<field name="grn_item_id_grnitem" class="java.lang.Integer"/>
+	<field name="grn_item_id_product" class="java.lang.String"/>
+	<field name="grn_item_grn_no" class="java.lang.String"/>
+	<field name="grn_item_unit" class="java.lang.String"/>
+	<field name="grn_item_qty" class="java.lang.Double"/>
+	<field name="product_id_product" class="java.lang.String"/>
+	<field name="product_brand" class="java.lang.String"/>
+	<field name="product_category" class="java.lang.String"/>
+	<field name="product_productname" class="java.lang.String"/>
+	<field name="product_unit" class="java.lang.String"/>
+	<field name="product_retail_price" class="java.lang.Double"/>
+	<field name="product_description" class="java.lang.String"/>
+	<field name="product_state" class="java.lang.Integer"/>
+	<field name="product_date_created" class="java.sql.Date"/>
+	<field name="product_brand_idbrand" class="java.lang.String"/>
+	<field name="product_brand_brand" class="java.lang.String"/>
+	<field name="product_brand_description" class="java.lang.String"/>
+	<field name="product_category_idcategory" class="java.lang.String"/>
+	<field name="product_category_category" class="java.lang.String"/>
+	<field name="product_category_description" class="java.lang.String"/>
+	<field name="grn_product_grn_no" class="java.lang.String"/>
+	<field name="grn_product_date" class="java.sql.Date"/>
+	<field name="grn_product_last_modified" class="java.sql.Timestamp"/>
+	<field name="grn_product_state" class="java.lang.Integer"/>
+	<field name="grn_product_created_by" class="java.lang.String"/>
+	<variable name="SUM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{grn_item_qty}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="TOTAL_PRICE" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{grn_item_qty}*$F{product_retail_price}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="156" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="210" height="151" uuid="7e608fde-ac1f-4349-a1de-ac9f8ae47b94"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="249" y="20" width="297" height="97" backcolor="#6699FF" uuid="1982245a-7baf-433d-a7fb-050a8ab717e0"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daily Production Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="19" uuid="2e79db02-6838-4a45-a4c1-77b442638d1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="554" height="25" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="af3c9ae0-3126-49f9-b235-3e5ce55d0fb6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="371" y="1" width="43" height="20" uuid="e4f40a59-c316-472e-9f8f-781190bf89e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quntity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="1" width="84" height="20" uuid="1b496496-7ecb-47c4-91b1-22cfdfc018bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="89" height="20" uuid="8d5266d2-ea4f-4b3b-a7f6-1eb57a868ec9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="86" height="20" uuid="5b346cd8-da41-437d-a20f-4e68162f7933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Brand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="1" width="85" height="20" uuid="2708dbb9-f74d-41ef-92a0-541a5d1b7aba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="1" width="50" height="20" uuid="fbed97cf-4b7d-44fc-bbb9-b400798d75e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Retail Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="1" width="65" height="20" uuid="22a08f12-0bf4-44b8-9533-c365c9d559b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<elementGroup>
+				<elementGroup/>
+			</elementGroup>
+			<textField>
+				<reportElement x="1" y="3" width="12" height="20" uuid="b9206762-d78f-40e0-84d5-4b6e0e71fefd"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="69" height="20" uuid="a4cbb84f-bfd3-41a4-9600-3ea5b1f66475"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{grn_item_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="3" width="84" height="20" uuid="4718f77e-315a-49d6-b2b9-dfdd04ecb2a1"/>
+				<textFieldExpression><![CDATA[$F{product_productname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="3" width="77" height="20" uuid="41d7bc82-8c1a-45d5-a81b-248424a6db2b"/>
+				<textFieldExpression><![CDATA[$F{grn_item_id_product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="3" width="85" height="20" uuid="4ddae446-17ec-4624-8d72-bf161daea774"/>
+				<textFieldExpression><![CDATA[$F{product_category_category}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="3" width="86" height="20" uuid="80cce225-99d7-49f2-a424-48bc2d6c86f6"/>
+				<textFieldExpression><![CDATA[$F{product_brand_brand}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="3" width="58" height="20" uuid="ed060024-723b-4ef0-84b2-926f022ed79b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{product_retail_price}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<textField>
+					<reportElement x="487" y="3" width="59" height="20" uuid="5737bf3a-8d0f-40b0-9619-b0a3131d908d"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{grn_item_qty}*$F{product_retail_price}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="19" uuid="1ef542bc-261d-43f6-8007-d16b6bf52b6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[...............................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="554" height="19" uuid="709659d2-0c4a-44c7-a6d1-b624dad873ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________________________________________]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement x="345" y="0" width="67" height="20" uuid="0c08637b-3308-43a4-b23c-b3bd9fae4a8b"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$V{SUM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="0" width="82" height="20" uuid="ccd7d9d3-b3f4-4a5c-9cd2-bb5f352e3dfa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Production]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="82" height="20" uuid="0035cddb-e01f-44f7-b5b4-649f9cd68871"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Price]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="496" y="0" width="56" height="20" uuid="e3c13dfe-9e18-4270-9b2a-01a158dcd655"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$V{TOTAL_PRICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

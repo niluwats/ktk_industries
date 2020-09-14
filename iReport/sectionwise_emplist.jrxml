@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sectionwise_emplist" language="groovy" pageWidth="720" pageHeight="842" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9d8bebd6-a646-42dc-80d7-1ef47b6f4f05">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="department" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     employee.`id_employee` AS employee_id_employee,
+     employee.`fname` AS employee_fname,
+     employee.`mname` AS employee_mname,
+     employee.`lname` AS employee_lname,
+     employee.`gender` AS employee_gender,
+     employee.`dob` AS employee_dob,
+     employee.`nic` AS employee_nic,
+     employee.`street` AS employee_street,
+     employee.`city` AS employee_city,
+     employee.`mobile` AS employee_mobile,
+     employee.`email` AS employee_email,
+     employee.`department` AS employee_department,
+     employee.`category` AS employee_category,
+     employee.`depat_section` AS employee_depat_section,
+     employee.`designation` AS employee_designation,
+     employee.`state` AS employee_state,
+     employee.`date_created` AS employee_date_created,
+     employee.`last_modified` AS employee_last_modified,
+     employee.`created_by` AS employee_created_by,
+     employee.`image_path` AS employee_image_path
+FROM
+     `employee` employee where department=$P{department};]]>
+	</queryString>
+	<field name="employee_id_employee" class="java.lang.String"/>
+	<field name="employee_fname" class="java.lang.String"/>
+	<field name="employee_mname" class="java.lang.String"/>
+	<field name="employee_lname" class="java.lang.String"/>
+	<field name="employee_gender" class="java.lang.String"/>
+	<field name="employee_dob" class="java.sql.Date"/>
+	<field name="employee_nic" class="java.lang.String"/>
+	<field name="employee_street" class="java.lang.String"/>
+	<field name="employee_city" class="java.lang.String"/>
+	<field name="employee_mobile" class="java.lang.String"/>
+	<field name="employee_email" class="java.lang.String"/>
+	<field name="employee_department" class="java.lang.String"/>
+	<field name="employee_category" class="java.lang.Integer"/>
+	<field name="employee_depat_section" class="java.lang.Integer"/>
+	<field name="employee_designation" class="java.lang.String"/>
+	<field name="employee_state" class="java.lang.Integer"/>
+	<field name="employee_date_created" class="java.sql.Date"/>
+	<field name="employee_last_modified" class="java.sql.Timestamp"/>
+	<field name="employee_created_by" class="java.lang.String"/>
+	<field name="employee_image_path" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="139" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="173" height="136" uuid="84a6c883-fa37-4938-a1e1-9110d74e563f"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="332" y="0" width="223" height="62" uuid="f5602807-8443-4371-9332-ad2f5e8d27b1"/>
+				<textElement>
+					<font fontName="Calibri" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee List]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="90" width="271" height="20" uuid="13b725b2-36da-4109-99cc-ae8ebfc817bb"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{department}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="680" height="32" backcolor="#CCCCCC" uuid="5f04f6ea-3315-46aa-8e1a-e3a9a3dee2e0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="61" height="20" uuid="3d830b6a-522d-4dff-a1de-45394afa9e13"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emp ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="0" width="61" height="20" uuid="4e5042e1-1184-4808-9083-93d423c91644"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="41" height="20" uuid="0b59f4b9-5cf5-4e97-9ad9-199c1e25cc2c"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="0" width="71" height="20" uuid="afa12d9d-8ca1-44a6-a101-0629fc4e909e"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="48" height="20" uuid="56ea4b98-0066-4111-bed6-3ce72518f837"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="521" y="0" width="100" height="20" uuid="ab374a82-0152-4b61-b642-512364847846"/>
+				<textElement>
+					<font fontName="Calibri" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="61" height="20" uuid="a7ccec94-f1de-4248-b365-09a9e78cdda7"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_id_employee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="77" height="20" uuid="be05409b-2c83-42b4-8e82-301c4e2a0a80"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="0" width="86" height="20" uuid="de7a7cc9-eff3-4f69-ac72-032f07941ce5"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_nic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="0" width="132" height="20" uuid="117afb02-e6c0-43f3-9eee-9959945d09f2"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="174" height="20" uuid="a2adcff8-a7a3-48d7-8f5f-48cf211eda9c"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="72" height="20" uuid="8aa28953-0bbf-42b5-81ae-450dfc22250d"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="71" height="20" uuid="69a6a194-fb6e-46e1-b3f7-9f0d38c1f1c1"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_mname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="11" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="emp_details" language="groovy" pageWidth="595" pageHeight="576" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a4ce4722-1f19-4dd1-be48-5d0cd35c2618">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="department" class="java.lang.String"/>
+	<parameter name="employee" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     basicsalary.`idsalary` AS basicsalary_idsalary,
+     basicsalary.`id_employee` AS basicsalary_id_employee,
+     basicsalary.`basicSalary` AS basicsalary_basicSalary,
+     basicsalary.`salary_period` AS basicsalary_salary_period,
+     basicsalary.`saved_date` AS basicsalary_saved_date,
+     employee.`id_employee` AS employee_id_employee,
+     employee.`fname` AS employee_fname,
+     employee.`mname` AS employee_mname,
+     employee.`lname` AS employee_lname,
+     employee.`gender` AS employee_gender,
+     employee.`dob` AS employee_dob,
+     employee.`nic` AS employee_nic,
+     employee.`street` AS employee_street,
+     employee.`city` AS employee_city,
+     employee.`mobile` AS employee_mobile,
+     employee.`email` AS employee_email,
+     employee.`department` AS employee_department,
+     employee.`category` AS employee_category,
+     employee.`depat_section` AS employee_depat_section,
+     employee.`designation` AS employee_designation,
+     employee.`state` AS employee_state,
+     employee.`date_created` AS employee_date_created,
+     employee.`last_modified` AS employee_last_modified,
+     employee.`created_by` AS employee_created_by,
+     employee.`image_path` AS employee_image_path
+FROM
+     `employee` employee INNER JOIN `basicsalary` basicsalary ON employee.`id_employee` = basicsalary.`id_employee`
+WHERE
+     employee.`id_employee` = $P{employee}
+     and employee.`department` = $P{department}]]>
+	</queryString>
+	<field name="basicsalary_idsalary" class="java.lang.Integer"/>
+	<field name="basicsalary_id_employee" class="java.lang.String"/>
+	<field name="basicsalary_basicSalary" class="java.lang.Double"/>
+	<field name="basicsalary_salary_period" class="java.lang.String"/>
+	<field name="basicsalary_saved_date" class="java.sql.Date"/>
+	<field name="employee_id_employee" class="java.lang.String"/>
+	<field name="employee_fname" class="java.lang.String"/>
+	<field name="employee_mname" class="java.lang.String"/>
+	<field name="employee_lname" class="java.lang.String"/>
+	<field name="employee_gender" class="java.lang.String"/>
+	<field name="employee_dob" class="java.sql.Date"/>
+	<field name="employee_nic" class="java.lang.String"/>
+	<field name="employee_street" class="java.lang.String"/>
+	<field name="employee_city" class="java.lang.String"/>
+	<field name="employee_mobile" class="java.lang.String"/>
+	<field name="employee_email" class="java.lang.String"/>
+	<field name="employee_department" class="java.lang.String"/>
+	<field name="employee_category" class="java.lang.Integer"/>
+	<field name="employee_depat_section" class="java.lang.Integer"/>
+	<field name="employee_designation" class="java.lang.String"/>
+	<field name="employee_state" class="java.lang.Integer"/>
+	<field name="employee_date_created" class="java.sql.Date"/>
+	<field name="employee_last_modified" class="java.sql.Timestamp"/>
+	<field name="employee_created_by" class="java.lang.String"/>
+	<field name="employee_image_path" class="java.lang.String"/>
+	<title>
+		<band height="135" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="3" width="166" height="132" uuid="951ec4d6-7033-400b-bd14-cec332cc86b5"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="321" y="0" width="234" height="53" uuid="da27aaea-1d40-4dac-a3c1-4085d84a6d87"/>
+				<textElement>
+					<font fontName="Cambria" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="101" width="100" height="20" uuid="3e0eff7c-677d-4c45-812e-ae8506f6a212"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Date joined]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="378" y="101" width="121" height="20" uuid="a34d3a7f-134b-4de5-ac59-73bf3b1c1502"/>
+				<textFieldExpression><![CDATA[$F{employee_date_created}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="100" height="20" uuid="50c9d457-0b2b-44e9-a37a-592bf147480c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="0" width="164" height="20" uuid="fcb9600f-f07b-4fec-9b85-447beab71715"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{department}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="336" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="33" width="100" height="20" uuid="1795bcba-f7fc-4ad4-8952-534453bf7849"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[First name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="33" width="158" height="20" uuid="a812bbe2-f4f1-4d94-aef4-4eed2366f381"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_fname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="53" width="100" height="20" uuid="030549ac-1cfd-4b74-8316-3ab48e55742a"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Middle name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="53" width="158" height="20" uuid="84ec51c1-52f7-41a8-8d0f-2b23b6cabb1a"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_mname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="73" width="100" height="20" uuid="a5e7fbbf-f78b-47bd-a6b3-704437c9beb9"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="73" width="188" height="20" uuid="31ce0107-ef5d-40f7-bac4-c0772de71db6"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_dob}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="93" width="100" height="20" uuid="76175333-6000-49ab-b3df-2423211521b7"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="93" width="100" height="20" uuid="b4639819-4c46-4180-89a4-b05729c639c1"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_nic}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="150" width="100" height="20" uuid="1918a7df-9ace-4e61-b886-a53aa95f4837"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Street ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="153" width="172" height="20" uuid="674856ea-6a33-4cde-920f-97ca1d440d0b"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_street}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="113" width="543" height="2" uuid="2145fec4-61a3-4583-a8b7-f9bb975e6846"/>
+			</line>
+			<staticText>
+				<reportElement x="12" y="170" width="100" height="20" uuid="3b61f737-b023-4361-a01a-170c3b8f9793"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[City]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="173" width="158" height="20" uuid="993f2a7b-e6f4-49f3-b709-f1ab0a037364"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_city}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="190" width="100" height="20" uuid="b6714a8d-4ccd-4ca1-96c2-7c6c0f37e570"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Mobile]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="194" width="145" height="20" uuid="f2d7612f-87ea-4f9a-bbae-e5c0af3d20fb"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_mobile}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="210" width="100" height="20" uuid="7350627c-5495-4ec4-b952-6dd52318af8a"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="214" width="188" height="20" uuid="7ba350db-b2e6-4029-891d-04702ca90d77"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="115" width="192" height="20" uuid="3ba7f3ce-915a-4ad5-b3f9-c55c705126a6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Contact details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="0" width="192" height="20" uuid="ff195089-e50c-431a-ad33-111fcee0973c"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Personal details]]></text>
+			</staticText>
+			<line>
+				<reportElement x="12" y="234" width="543" height="2" uuid="7c5c2b0e-5dd0-47a0-adeb-a0a109619317"/>
+			</line>
+			<staticText>
+				<reportElement x="12" y="236" width="192" height="20" uuid="6cdaaa35-a573-4088-a75f-c4176e2e9b01"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Proffessional details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="270" width="100" height="20" uuid="be9ab4e2-8275-4c1e-b785-429a77dbb2dd"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="270" width="201" height="20" uuid="c7f65560-094b-463a-9db9-7c74094a3a1a"/>
+				<textFieldExpression><![CDATA[$F{employee_designation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="288" width="100" height="20" uuid="a7b79286-8a53-47d7-bd11-a341f44db4ba"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="288" width="217" height="20" uuid="8e253e0a-39f3-4e19-a526-21cfff7918ac"/>
+				<textFieldExpression><![CDATA[$F{employee_department}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="308" width="100" height="20" uuid="9cb0e85c-2fe6-4eb3-8ff5-f28386fba38c"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Basic salary]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="308" width="188" height="20" uuid="279c5129-d328-4ebd-a077-cafd432d187f"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{basicsalary_basicSalary}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

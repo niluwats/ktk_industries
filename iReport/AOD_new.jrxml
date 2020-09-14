@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AOD_new" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83e04870-aaf0-4276-b2eb-49671ded6f16">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Invoice_id" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Pasindu\\Desktop\\ERP_Central_Industries\\iReport\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     invoice_aod.`id_invoice` AS invoice_aod_id_invoice,
+     invoice_aod.`id_customer` AS invoice_aod_id_customer,
+     invoice_aod.`employee_salesrep` AS invoice_aod_employee_salesrep,
+     invoice_aod.`date` AS invoice_aod_date,
+     invoice_aod.`payment_type` AS invoice_aod_payment_type,
+     invoice_aod.`sub_total` AS invoice_aod_sub_total,
+     invoice_aod.`discount` AS invoice_aod_discount,
+     invoice_aod.`net_total` AS invoice_aod_net_total,
+     invoice_aod.`state` AS invoice_aod_state,
+     product.`id_product` AS product_id_product,
+     product.`brand` AS product_brand,
+     product.`category` AS product_category,
+     product.`productname` AS product_productname,
+     product.`unit` AS product_unit,
+     product.`retail_price` AS product_retail_price,
+     product.`description` AS product_description,
+     product.`state` AS product_state,
+     product.`date_created` AS product_date_created,
+     invoice_item.`id_orderitem` AS invoice_item_id_orderitem,
+     invoice_item.`id_invoice` AS invoice_item_id_invoice,
+     invoice_item.`idproduct_stock` AS invoice_item_idproduct_stock,
+     invoice_item.`qty` AS invoice_item_qty,
+     invoice_item.`value` AS invoice_item_value,
+     product_stock.`idproduct_stock` AS product_stock_idproduct_stock,
+     product_stock.`product_id` AS product_stock_product_id,
+     product_stock.`qty` AS product_stock_qty,
+     product_stock.`state` AS product_stock_state,
+     product_stock.`last_update` AS product_stock_last_update,
+     customer.`id_customer` AS customer_id_customer,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`business_name` AS customer_business_name,
+     customer.`street` AS customer_street,
+     customer.`city` AS customer_city,
+     customer.`telephoneno` AS customer_telephoneno,
+     customer.`mobile` AS customer_mobile,
+     customer.`email` AS customer_email,
+     customer.`fax` AS customer_fax,
+     customer.`state` AS customer_state,
+     customer.`createby` AS customer_createby,
+     customer.`date_created` AS customer_date_created,
+     customer.`modifiedby` AS customer_modifiedby,
+     customer.`last_modified` AS customer_last_modified,
+     customer.`grade` AS customer_grade,
+     customer.`nic` AS customer_nic
+FROM
+     `invoice_aod` invoice_aod INNER JOIN `invoice_item` invoice_item ON invoice_aod.`id_invoice` = invoice_item.`id_invoice`
+     INNER JOIN `product_stock` product_stock ON invoice_item.`idproduct_stock` = product_stock.`idproduct_stock`
+     INNER JOIN `product` product ON product_stock.`product_id` = product.`id_product`
+     INNER JOIN `customer` customer ON invoice_aod.`id_customer` = customer.`id_customer`
+WHERE
+     invoice_aod.`id_invoice` = $P{Invoice_id}]]>
+	</queryString>
+	<field name="invoice_aod_id_invoice" class="java.lang.String"/>
+	<field name="invoice_aod_id_customer" class="java.lang.String"/>
+	<field name="invoice_aod_employee_salesrep" class="java.lang.String"/>
+	<field name="invoice_aod_date" class="java.sql.Date"/>
+	<field name="invoice_aod_payment_type" class="java.lang.String"/>
+	<field name="invoice_aod_sub_total" class="java.lang.Double"/>
+	<field name="invoice_aod_discount" class="java.lang.Double"/>
+	<field name="invoice_aod_net_total" class="java.lang.Double"/>
+	<field name="invoice_aod_state" class="java.lang.Integer"/>
+	<field name="product_id_product" class="java.lang.String"/>
+	<field name="product_brand" class="java.lang.String"/>
+	<field name="product_category" class="java.lang.String"/>
+	<field name="product_productname" class="java.lang.String"/>
+	<field name="product_unit" class="java.lang.String"/>
+	<field name="product_retail_price" class="java.lang.Double"/>
+	<field name="product_description" class="java.lang.String"/>
+	<field name="product_state" class="java.lang.Integer"/>
+	<field name="product_date_created" class="java.sql.Date"/>
+	<field name="invoice_item_id_orderitem" class="java.lang.Integer"/>
+	<field name="invoice_item_id_invoice" class="java.lang.String"/>
+	<field name="invoice_item_idproduct_stock" class="java.lang.Integer"/>
+	<field name="invoice_item_qty" class="java.lang.Double"/>
+	<field name="invoice_item_value" class="java.lang.Double"/>
+	<field name="product_stock_idproduct_stock" class="java.lang.Integer"/>
+	<field name="product_stock_product_id" class="java.lang.String"/>
+	<field name="product_stock_qty" class="java.lang.Double"/>
+	<field name="product_stock_state" class="java.lang.Integer"/>
+	<field name="product_stock_last_update" class="java.sql.Timestamp"/>
+	<field name="customer_id_customer" class="java.lang.String"/>
+	<field name="customer_fname" class="java.lang.String"/>
+	<field name="customer_lname" class="java.lang.String"/>
+	<field name="customer_business_name" class="java.lang.String"/>
+	<field name="customer_street" class="java.lang.String"/>
+	<field name="customer_city" class="java.lang.String"/>
+	<field name="customer_telephoneno" class="java.lang.String"/>
+	<field name="customer_mobile" class="java.lang.String"/>
+	<field name="customer_email" class="java.lang.String"/>
+	<field name="customer_fax" class="java.lang.String"/>
+	<field name="customer_state" class="java.lang.Integer"/>
+	<field name="customer_createby" class="java.lang.String"/>
+	<field name="customer_date_created" class="java.sql.Date"/>
+	<field name="customer_modifiedby" class="java.lang.String"/>
+	<field name="customer_last_modified" class="java.sql.Timestamp"/>
+	<field name="customer_grade" class="java.lang.String"/>
+	<field name="customer_nic" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="135" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="0" width="254" height="97" backcolor="#6699FF" uuid="17c8be9a-4dee-4a52-8682-892dd0f3cd7f"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advice Of Dispatch]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="315" height="135" uuid="cf650c4d-6cf7-429a-8243-61662422657a"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\iReport\\ktk logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="40" width="91" height="20" uuid="4baea2a2-e377-4b02-a585-75617927c25c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="10" width="90" height="20" uuid="f82cf021-68c1-44eb-b86a-9b208ac423de"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoce No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="10" width="37" height="20" uuid="3789309f-ebb0-4572-8557-970afa0a6487"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="10" width="10" height="20" uuid="48c644df-75b2-4086-88ed-1ab16d3e2958"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="40" width="10" height="20" uuid="df0ade86-f249-4a60-8684-780ba8c75bf6"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="10" width="10" height="20" uuid="25d30ed4-6981-4ba3-8c93-0462818c7080"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="10" width="100" height="20" uuid="2eb576ee-9da4-40d4-b90f-6abcd9e0982a"/>
+				<textFieldExpression><![CDATA[$P{Invoice_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="40" width="100" height="20" uuid="03314351-4f16-445e-8e8d-a2fc2f797598"/>
+				<textFieldExpression><![CDATA[$F{customer_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="40" width="100" height="20" uuid="acca7db1-8352-4b58-8149-b8e13568a891"/>
+				<textFieldExpression><![CDATA[$F{customer_lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="15" width="100" height="20" uuid="4980dfa2-7100-4265-a9a2-c487ebad7210"/>
+				<textFieldExpression><![CDATA[$F{invoice_aod_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="355" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="84aa1bf0-e259-4d43-b6b1-1eae7ab90ca9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="0" width="254" height="20" backcolor="#CCCCCC" uuid="0148e48b-ec4a-4760-9785-00903570e294"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="455" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="3d936777-1f19-4baf-9dc0-f734b3ac433a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="102" height="20" backcolor="#CCCCCC" uuid="c06fcbdf-8416-4ef9-b946-2122aca0a96f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Code]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="355" y="7" width="100" height="20" uuid="78784b1c-b797-4ccc-9cbe-fa19ff344da1"/>
+				<textFieldExpression><![CDATA[$F{invoice_item_qty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement x="395" y="10" width="52" height="20" uuid="83d99498-d132-4ac2-8474-f2b1b72fdd65"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="50" width="52" height="20" uuid="4cb6a008-44d6-4be6-9a88-17ecec510d7c"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="10" width="91" height="20" uuid="d02ecfaf-9581-48fe-905f-78ca17060cc2"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Method]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="30" width="52" height="20" uuid="955925ad-4f1c-40bb-bf56-c8d5627a9d98"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="10" width="100" height="20" uuid="f35240cf-cd40-4a94-b462-6971b17c9371"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="102" y="10" width="10" height="20" uuid="1698568a-2a69-4128-9d10-6a056e121e64"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="10" width="10" height="20" uuid="c1da3cd5-fdf9-410b-8c4d-edc067f7fe03"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="30" width="10" height="20" uuid="cc8c4c18-c04e-4631-a2ec-6c388988c2ca"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="50" width="10" height="20" uuid="b0b83f43-33a5-475d-829c-313fa757e76a"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

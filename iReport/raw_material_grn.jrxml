@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="raw_material_grn" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f880ffa3-11b7-46e4-8020-36e7b6f38685">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="grn_no" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from grn_rawitem gi inner join raw_matrials r on gi.id_raw = r.idraw_matrials
+inner join grn_raw gr on gi.grn_no=gr.grn_no
+inner join supplier s on gr.id_supplier= s.id_supplier
+ where gi.grn_no= $P{grn_no}]]>
+	</queryString>
+	<field name="id_items" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grn_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_raw" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="value" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_price" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idraw_matrials" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_supplier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="created_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="last_modified" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="approved_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="approve_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="company" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telephoneno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mobile" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_person" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_person_mobile" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_person_email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_created" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modifiedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="157" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="210" height="151" uuid="9aa996fe-66e9-44ed-9b38-5ad25938d137"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\ktk.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="31" width="254" height="97" backcolor="#6699FF" uuid="3f15a54c-3f1c-4fd9-a6be-e9c36a157e92"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Raw Material GRN Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="76" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="10" width="100" height="20" uuid="e8ae9532-f4f2-4abb-9788-406efb7002c8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="12" width="100" height="20" uuid="92917ec8-980d-4a19-b002-41ca32c07957"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="43" width="100" height="20" uuid="002ee0ee-2a45-4251-a152-aa8b49d0a113"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="43" width="100" height="20" uuid="081124e2-cd06-4c64-830f-f7ad02b2db10"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="102" y="10" width="100" height="20" uuid="04cf8322-393a-4cf9-b07c-5b949aa5b68b"/>
+				<textFieldExpression><![CDATA[$F{grn_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="43" width="100" height="20" uuid="a09bb16f-dcdf-4433-805d-fca856eceefd"/>
+				<textFieldExpression><![CDATA[$F{id_supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="43" width="100" height="20" uuid="0b7c40d8-0415-4ca9-b92d-38c123b9701f"/>
+				<textFieldExpression><![CDATA[$F{company}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="12" width="100" height="20" uuid="7027ddac-88c3-418a-9b93-5e4a9761c058"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="445" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e5af2626-6302-4141-aed8-0de5dc6ca206"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="cb5d3876-f4ea-4332-91b7-dd25ab46b625"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="223" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="8d69931a-ae48-46bd-82a1-00bf54dfda42"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="112" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="8348cb52-d1dc-4036-a979-4b2fff7e3bab"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Raw Material]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="334" y="0" width="111" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="7ae98aa3-c23e-46a3-81d1-ad1b66820ea3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit Price ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="12e8597f-7d6a-40f0-95f9-01e07d66c40c"/>
+				<textFieldExpression><![CDATA[$F{id_raw}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="0" width="100" height="20" uuid="a259c9ee-57d9-4e2d-ae83-ce9bbc497e54"/>
+				<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="100" height="20" uuid="837122c5-6420-4852-8fce-49dbd23ed7b6"/>
+				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="0" width="100" height="20" uuid="0d6beaf2-d7f6-4f36-91e8-ac4734cb371e"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="0" width="100" height="20" uuid="b428ea86-bad5-4312-ab2c-efb6cd27e8c2"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

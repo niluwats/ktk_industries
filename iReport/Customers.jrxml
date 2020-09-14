@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="product_stock" language="groovy" pageWidth="595" pageHeight="409" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c91f93c-2c0b-4668-9db0-8824351880ac">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<queryString>
+		<![CDATA[SELECT
+     customer.`id_customer` AS customer_id_customer,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`business_name` AS customer_business_name,
+     customer.`street` AS customer_street,
+     customer.`city` AS customer_city,
+     customer.`telephoneno` AS customer_telephoneno,
+     customer.`mobile` AS customer_mobile,
+     customer.`email` AS customer_email,
+     customer.`fax` AS customer_fax,
+     customer.`state` AS customer_state,
+     customer.`createby` AS customer_createby,
+     customer.`date_created` AS customer_date_created,
+     customer.`modifiedby` AS customer_modifiedby,
+     customer.`last_modified` AS customer_last_modified,
+     customer.`grade` AS customer_grade,
+     customer.`nic` AS customer_nic
+FROM
+     `customer` customer]]>
+	</queryString>
+	<field name="customer_id_customer" class="java.lang.String"/>
+	<field name="customer_fname" class="java.lang.String"/>
+	<field name="customer_lname" class="java.lang.String"/>
+	<field name="customer_business_name" class="java.lang.String"/>
+	<field name="customer_street" class="java.lang.String"/>
+	<field name="customer_city" class="java.lang.String"/>
+	<field name="customer_telephoneno" class="java.lang.String"/>
+	<field name="customer_mobile" class="java.lang.String"/>
+	<field name="customer_email" class="java.lang.String"/>
+	<field name="customer_fax" class="java.lang.String"/>
+	<field name="customer_state" class="java.lang.Integer"/>
+	<field name="customer_createby" class="java.lang.String"/>
+	<field name="customer_date_created" class="java.sql.Date"/>
+	<field name="customer_modifiedby" class="java.lang.String"/>
+	<field name="customer_last_modified" class="java.sql.Timestamp"/>
+	<field name="customer_grade" class="java.lang.String"/>
+	<field name="customer_nic" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="156" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="210" height="151" uuid="7e608fde-ac1f-4349-a1de-ac9f8ae47b94"/>
+				<imageExpression><![CDATA["ktk logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="292" y="20" width="254" height="97" backcolor="#6699FF" uuid="1982245a-7baf-433d-a7fb-050a8ab717e0"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="19" uuid="2e79db02-6838-4a45-a4c1-77b442638d1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="554" height="25" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="af3c9ae0-3126-49f9-b235-3e5ce55d0fb6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="282" y="1" width="75" height="20" uuid="753da868-974d-46cc-9fc7-b565cacecf95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="1" width="116" height="20" uuid="dd0bd75f-b418-4f8b-8c88-c245e2a11257"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="1" width="100" height="20" uuid="e4f40a59-c316-472e-9f8f-781190bf89e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Business Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="6" width="82" height="20" uuid="3292ca5d-27e6-406e-9c3b-acdeebdd6e12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="0" width="82" height="20" uuid="4fae681c-e271-46d9-bf0b-45a744272728"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Mobile Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="1" width="100" height="20" uuid="b68dfcda-eb36-4312-9b2c-f983cfa626ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="94" y="3" width="100" height="20" uuid="52808299-3130-4183-959a-ce4d1a1819e6"/>
+				<textFieldExpression><![CDATA[$F{customer_fname}+" "+$F{customer_lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="3" width="100" height="20" uuid="5628d22c-fbfd-4bee-b6b4-e7243fdb8276"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{customer_business_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="3" width="75" height="20" uuid="f0e30474-6a6d-42e5-8089-0959d256a84e"/>
+				<textFieldExpression><![CDATA[$F{customer_nic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="3" width="116" height="20" uuid="5bc2539d-0339-431b-8fb0-a6600a091323"/>
+				<textFieldExpression><![CDATA[$F{customer_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="3" width="82" height="20" uuid="3ff5a83e-a2ed-4598-9ac8-94b42591f1a9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{customer_mobile}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<elementGroup>
+					<textField>
+						<reportElement x="13" y="0" width="81" height="20" uuid="6bdd8a5d-48ed-4048-a87b-005455d14781"/>
+						<textElement verticalAlignment="Middle"/>
+						<textFieldExpression><![CDATA[$F{customer_id_customer}]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</elementGroup>
+			<textField>
+				<reportElement x="1" y="3" width="12" height="20" uuid="b9206762-d78f-40e0-84d5-4b6e0e71fefd"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="19" uuid="1ef542bc-261d-43f6-8007-d16b6bf52b6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[...............................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="554" height="19" uuid="709659d2-0c4a-44c7-a6d1-b624dad873ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________________________________________]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="506" y="0" width="40" height="20" uuid="ac6c15fd-2ad3-4740-9bb1-00a4a140269c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="0" width="116" height="20" uuid="ccd7d9d3-b3f4-4a5c-9cd2-bb5f352e3dfa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[No of Customers]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

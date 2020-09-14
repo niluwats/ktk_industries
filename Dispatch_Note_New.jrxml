@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Dispatch_Note_New" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c077615-2bf1-4b7d-97c7-f9023b5b44ae">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<parameter name="Disp" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\iReport\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from dispatch where id_dispatch =$P{Disp};]]>
+	</queryString>
+	<field name="id_dispatch" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="driver" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vehicle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="created_by" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="2" width="283" height="151" uuid="3dead452-d53f-4035-b858-1dc3ab8c989f"/>
+				<imageExpression><![CDATA["C:\\Users\\wemba\\Desktop\\KTK\\ktk.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="285" y="24" width="270" height="97" backcolor="#6699FF" uuid="64b2e60c-a0ce-45ed-bbe6-681e789b752a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Dispatch Note]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="50" width="88" height="20" uuid="42085034-967c-4914-bb12-866aadc9a60b"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="90" height="20" uuid="8e9bfdab-4eda-4034-b3b2-3b29b65015b5"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Driver Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="10" width="89" height="20" uuid="93e92898-d887-4f01-b4aa-d5bc7a0dde63"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dispatch No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="10" width="10" height="20" uuid="479816db-5c00-488c-b7c5-d84ecec3bf76"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="50" width="10" height="20" uuid="630cb160-ec73-4ed1-931d-fde36772c4ad"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="30" width="10" height="20" uuid="fcc7095f-fff5-4d05-b72b-ace415cdbb8a"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="10" width="10" height="20" uuid="6f1e5d32-ab32-4112-a332-7fe13db141a2"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="10" width="38" height="20" uuid="3f2465e1-652f-4f85-b69e-65050d2a7c5a"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="10" width="100" height="20" uuid="c1bb2c9e-0c44-46ff-bb6e-f4868e4fbe74"/>
+				<textFieldExpression><![CDATA[$F{id_dispatch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="30" width="100" height="20" uuid="01681f85-5562-4148-b99b-5a7e0eaa4d3a"/>
+				<textFieldExpression><![CDATA[$F{driver}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="50" width="100" height="20" uuid="9ded2e4e-72ed-4569-bd08-5559a2fd5d29"/>
+				<textFieldExpression><![CDATA[$F{vehicle}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="390" y="10" width="100" height="20" uuid="8a677fe2-b8dd-439b-8cf4-9272232280d9"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="12" width="118" height="20" backcolor="#CCCCCC" uuid="fa5622dd-7fd2-463f-bf5d-fbe2211e08f9"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="12" width="133" height="20" backcolor="#CCCCCC" uuid="4227bbf9-ef6b-49bc-b63f-3bcd7a003aa5"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Invoice No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="133" y="12" width="304" height="20" backcolor="#CCCCCC" uuid="89276304-7d26-44f8-b74a-3d53e8a3f839"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="10" width="553" height="100" uuid="cb2d29f3-4854-4b5e-b5f7-2762a8df92f6"/>
+				<subreportParameter name="Dis_sub">
+					<subreportParameterExpression><![CDATA[$F{id_dispatch}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Dispatch_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="22" width="67" height="20" uuid="668edf3c-7f65-49de-a473-98a1f253b51f"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked By :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="9" width="82" height="20" uuid="276bda60-f04a-49d3-aed2-2306f4b5a770"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET  TOTAL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="22" width="144" height="20" uuid="cfb834d2-229d-4d50-be5d-7c5f89868720"/>
+				<textElement verticalAlignment="Bottom" rotation="None">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[..........................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="425" y="9" width="100" height="20" uuid="c4734223-838f-48b3-93b9-712cba7faf82"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
